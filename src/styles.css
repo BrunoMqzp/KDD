@@ -1,0 +1,274 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    font-family: Poppins, "Euclid Circular A";
+    color: #ffffff;
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -250px 0%;
+  }
+  
+  .shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgb(0 0 0 / 90%), rgb(0 0 0 / 0%));
+  }
+  
+  button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .burger,
+  .menu {
+    position: fixed;
+  }
+  
+  .burger {
+    z-index: 4;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    background-image: url("menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  body.open .burger {
+    background-image: url("close.svg");
+  }
+  
+  .background {
+    position: fixed;
+    z-index: 2;
+    top: 44px;
+    left: 44px;
+    aspect-ratio: 1 / 1;
+    translate: -50% -50%;
+    height: 88px;
+    background: rgba(122, 122, 122, 0);
+    border-radius: 50%;
+    transition: 0.6s;
+  }
+  
+  body.open .background {
+    height: 300vmax;
+    background: rgba(76, 76, 76, 0.8);
+  }
+  
+  .menu {
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.05s;
+  }
+  
+  .menu nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 100px;
+  }
+  
+  body.open .menu {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  body .menu nav:hover > a {
+    opacity: 0.25;
+  }
+  
+  body .menu nav > a:hover {
+    opacity: 1;
+    translate: 8px 0;
+  }
+  
+  .menu a {
+    position: relative;
+    color: #f9f9f9;
+    font-size: 32px;
+    font-family: "Euclid Circular A";
+    padding: 20px 0 20px 20px;
+    text-decoration: none;
+    opacity: 0;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  
+  .menu a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -26px;
+    translate: 0 -50%;
+    margin-top: 2px;
+    width: 10px;
+    height: 10px;
+    border-top: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;
+    opacity: 0;
+    rotate: 45deg;
+    transition: 0.3s;
+  }
+  
+  .menu a:hover::after {
+    opacity: 1;
+  }
+  
+  @keyframes appear {
+    0% {
+      opacity: 0;
+      translate: -30px 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  body.open .menu a {
+    opacity: 1;
+    animation: appear 0.25s backwards;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    background-color: white;
+    border-radius: .5rem;
+    box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+.post img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.post h2, .post p {
+    margin: 1rem 0;
+}
+
+.post input {
+    width: 75%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+}
+
+.post button {
+    width: 50%;
+    padding: 1rem;
+    background-color: #c28bd3;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.post .button-group button:last-child {
+    margin-bottom: 0; 
+}
+
+.post button:hover {
+    color: #41d9fe;
+    background-color: #ffffff;
+    border: 1px solid #41d9fe;
+}
+
+.forgot-password {
+    display: block;
+    margin-bottom: 1rem;
+    color: #41d9fe;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 0.8rem; 
+}
+
+.forgot-password:hover {
+    color: #c28bd3;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+    
+    .post img {
+        max-width: 30%;
+    }
+
+    .post input {
+        width: 85%;
+    }
+
+    .post button {
+        width: 60%;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+        padding: 0.5rem;
+    }
+    
+    .post img {
+        max-width: 25%;
+    }
+
+    .post input {
+        width: 100%;
+    }
+
+    .post button {
+        width: 80%;
+        padding: 0.6rem;
+    }
+
+    .forgot-password {
+        font-size: 0.7rem;
+    }
+}  
